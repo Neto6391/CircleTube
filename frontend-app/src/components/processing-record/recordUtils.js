@@ -27,6 +27,12 @@ export function captureCamera(callback) {
 			mozNoiseSuppression: true,
 			mozHighpassFilter: false
 		};
+	} else {
+		mandatoryAudio = {
+			echoCancellation: true,
+			autoGainControl: false,
+			noiseSuppression: true
+		};
 	}
 	const constraints = {
 		audio: {
