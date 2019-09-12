@@ -12,14 +12,25 @@ export function generateRandomString() {
 }
 
 export function captureCamera(callback) {
+	let mandatoryAudio;
+	if (navigator.webkitGetUserMedia) {
+		mandatoryAudio = {
+			echoCancellation: true,
+			googAutoGainControl: false,
+			googNoiseSuppression: true,
+			googHighpassFilter: false
+		};
+	} else if (navigator.mozGetUserMedia) {
+		mandatoryAudio = {
+			echoCancellation: true,
+			mozAutoGainControl: false,
+			mozNoiseSuppression: true,
+			mozHighpassFilter: false
+		};
+	}
 	const constraints = {
 		audio: {
-			mandatory: {
-				echoCancellation: true,
-				googAutoGainControl: false,
-				googNoiseSuppression: true,
-				googHighpassFilter: false
-			}
+			mandatory: mandatoryAudio
 		},
 		video: {
 			width: 320,
