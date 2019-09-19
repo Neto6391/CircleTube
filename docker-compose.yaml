@@ -4,10 +4,14 @@ services:
     container_name: frontend-app
     image: node:12.9.1-alpine
     restart: always
-    build: ./frontend-app/
+    build:
+      context: ./frontend-app
+      dockerfile: Dockerfile
     volumes:
-      - ./frontend-app:/application-frontend
-    working_dir: /application-frontend
+      - ./frontend-app:/usr/src/frontend-app
+      - /usr/src/frontend-app/node_modules
+    working_dir: /usr/src/frontend-app
+    command: yarn start
     ports:
       - 3000:3000
     depends_on:
@@ -18,10 +22,14 @@ services:
     container_name: backend-app
     image: node:12.9.1-alpine
     restart: always
-    build: ./backend-app/
+    build:
+      context: ./backend-app
+      dockerfile: Dockerfile
     volumes:
-      - ./backend-app:/application-backend
-    working_dir: /application-backend
+      - ./backend-app:/usr/src/backend-app
+      - /usr/src/backend-app/node_modules
+    working_dir: /usr/src/backend-app
+    command: yarn start
     ports:
       - 5000:5000
       - 35729:35729

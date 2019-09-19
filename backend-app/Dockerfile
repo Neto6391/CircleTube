@@ -1,6 +1,6 @@
 FROM node:12.9.1-alpine
-RUN mkdir -p application-backend
-COPY . /application-backend
+ADD package.json /usr/src/backend-app/
+WORKDIR /usr/src/backend-app
 RUN yarn install
+COPY . /usr/src/backend-app/
 EXPOSE 5000
-CMD [ "yarn", "start" ]
