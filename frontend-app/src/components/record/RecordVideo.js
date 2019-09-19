@@ -48,12 +48,12 @@ class RecordVideo extends Component {
 				camera: stream,
 				videoPreview: document.querySelector("video"),
 				recordVideo: RecordRTC(stream, {
-					type: "video",
-					recorderType: RecordRTC.MediaStreamRecorder,
-					bitsPerSecond: 256 * 8 * 1024
+					type: "video/webm; codecs=vp9"
 				})
 			});
 
+			//This Feature is for preview and is necessary disable eslint, why show warning
+			/* eslint-disable */
 			this.state.videoPreview.srcObject = stream;
 			this.state.recordVideo.startRecording();
 		});
