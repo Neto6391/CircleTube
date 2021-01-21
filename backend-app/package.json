@@ -11,7 +11,7 @@
 		"formidable": "^1.2.1",
 		"mime": "^2.4.4",
 		"recordrtc": "^5.5.8",
-		"socket.io": "^2.2.0"
+		"socket.io": "^2.4.0"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
